@@ -16,8 +16,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wahyurhy.mengapaperlucompose.ui.theme.MengapaPerluComposeTheme
 
@@ -41,17 +43,22 @@ class Sample1ComposeActivity : ComponentActivity() {
 @Composable
 fun JetpackCompose() {
     Box(
-        modifier = Modifier.fillMaxHeight().background(Color.LightGray),
+        modifier = Modifier
+            .fillMaxHeight()
+            .background(Color.LightGray),
         contentAlignment = Alignment.Center
     ) {
         Card(Modifier.padding(16.dp)) {
             var expanded by remember { mutableStateOf(false) }
             Column(
-                Modifier.clickable { expanded = !expanded }.padding(bottom = 32.dp),
+                Modifier
+                    .clickable { expanded = !expanded }
+                    .padding(bottom = 32.dp),
             ) {
                 Image(
                     painter = painterResource(R.drawable.ic_logo),
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = Modifier.size(150.dp),
                 )
                 AnimatedVisibility(expanded) {
                     Text(
@@ -62,5 +69,13 @@ fun JetpackCompose() {
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun defaultPreview() {
+    MengapaPerluComposeTheme {
+        JetpackCompose()
     }
 }
