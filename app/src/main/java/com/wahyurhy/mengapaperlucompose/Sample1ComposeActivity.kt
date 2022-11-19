@@ -53,7 +53,8 @@ fun JetpackCompose() {
             Column(
                 Modifier
                     .clickable { expanded = !expanded }
-                    .padding(bottom = 32.dp),
+                    .padding(32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     painter = painterResource(R.drawable.ic_logo),
