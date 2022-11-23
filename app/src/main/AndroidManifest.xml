@@ -13,6 +13,24 @@
         android:theme="@style/Theme.MengapaPerluCompose"
         tools:targetApi="31">
         <activity
+            android:name=".Sample3ComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sample3_compose"
+            android:theme="@style/Theme.MengapaPerluCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Sample2ComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sample2_compose"
+            android:theme="@style/Theme.MengapaPerluCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Sample1ComposeActivity"
             android:exported="false"
             android:label="@string/title_activity_sample1_compose"

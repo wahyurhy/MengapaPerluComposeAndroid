@@ -27,5 +27,15 @@ class MainActivity : AppCompatActivity() {
             val intentSample1Compose = Intent(this, Sample1ComposeActivity::class.java)
             startActivity(intentSample1Compose)
         }
+
+        binding?.btnSample2Compose?.setOnClickListener {
+            val intentSample2Compose = Intent(this, Sample2ComposeActivity::class.java)
+            startActivity(intentSample2Compose)
+        }
+
+        binding?.btnSample3Compose?.setOnClickListener {
+            val intentSample3Compose = Intent(this, Sample3ComposeActivity::class.java)
+            startActivity(intentSample3Compose)
+        }
     }
 }

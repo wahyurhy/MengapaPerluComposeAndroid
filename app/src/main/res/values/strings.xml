@@ -3,4 +3,8 @@
     <string name="sample_1">Sample 1</string>
     <string name="title_activity_sample1_compose">Sample1ComposeActivity</string>
     <string name="sample_1_compose">Sample 1 Compose</string>
+    <string name="sample_2_compose">Sample 2 Compose</string>
+    <string name="title_activity_sample2_compose">Sample2ComposeActivity</string>
+    <string name="sample_3_compose">Sample 3 Compose</string>
+    <string name="title_activity_sample3_compose">Sample3ComposeActivity</string>
 </resources>
