@@ -3,16 +3,18 @@ package com.wahyurhy.mengapaperlucompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.wahyurhy.mengapaperlucompose.ui.theme.MengapaPerluComposeTheme
 
 class Sample3ComposeActivity : ComponentActivity() {
@@ -41,11 +43,19 @@ fun Sample3ComposeApp() {
 fun JetCoffeApp() {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "My Scaffold")
-                },
-            )
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .height(80.dp)
+                    .fillMaxWidth()
+                    .background(color = MaterialTheme.colors.primary)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_logo),
+                    contentDescription = null,
+                    modifier = Modifier.height(40.dp)
+                )
+            }
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
