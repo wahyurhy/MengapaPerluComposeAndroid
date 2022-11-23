@@ -9,7 +9,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -22,7 +27,8 @@ class Sample3ComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MengapaPerluComposeTheme {
-                Sample3ComposeApp()
+//                Sample3ComposeApp()
+                MyTopBar()
             }
         }
     }
@@ -35,12 +41,12 @@ fun Sample3ComposeApp() {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
     ) {
-        JetCoffeApp()
+        JetCoffeeApp()
     }
 }
 
 @Composable
-fun JetCoffeApp() {
+fun JetCoffeeApp() {
     Scaffold(
         topBar = {
             Box(
@@ -78,6 +84,34 @@ fun JetCoffeApp() {
 @Composable
 fun JetCoffeAppPreview() {
     MengapaPerluComposeTheme {
-        JetCoffeApp()
+        JetCoffeeApp()
     }
+}
+
+@Composable
+fun MyTopBar() {
+    var showMenu by remember { mutableStateOf(false) }
+    TopAppBar(
+        navigationIcon = {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
+            }
+        },
+        title = {
+            Text(text = "My Scaffold")
+        },
+        actions = {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorite")
+            }
+            IconButton(onClick = { showMenu = !showMenu }) {
+                Icon(imageVector = Icons.Default.MoreVert, contentDescription = "More")
+            }
+            DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+                DropdownMenuItem(onClick = { /*TODO*/ }) {
+                    Text(text = "Call me")
+                }
+            }
+        }
+    )
 }
