@@ -137,7 +137,9 @@ fun FormInput() {
             name = newName
         },
         label = { Text(text = "Name") },
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     )
 }
 
