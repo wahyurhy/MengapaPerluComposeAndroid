@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -129,7 +130,7 @@ fun MyTopBarPreview() {
 
 @Composable
 fun FormInput() {
-    var name by remember { mutableStateOf("") }
+    var name by rememberSaveable { mutableStateOf("") }
     OutlinedTextField(
         value = name,
         onValueChange = { newName ->
