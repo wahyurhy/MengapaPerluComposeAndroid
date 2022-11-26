@@ -32,6 +32,7 @@ class Sample3ComposeActivity : ComponentActivity() {
                     // Sample3ComposeApp()
                     MyTopBar()
                     FormInput()
+                    StatefulCounter()
                 }
             }
         }
@@ -148,5 +149,27 @@ fun FormInput() {
 fun FormInputPreview() {
     MengapaPerluComposeTheme {
         FormInput()
+    }
+}
+
+@Composable
+fun StatefulCounter() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(16.dp)
+    ) {
+        var count by rememberSaveable { mutableStateOf(0) }
+        Text(text = "Button clicked $count times:")
+        Button(onClick = { count++ }) {
+            Text(text = "Click me!")
+        }
+    }
+}
+
+@Preview
+@Composable
+fun StatefulCounterPreview() {
+    MengapaPerluComposeTheme {
+        StatefulCounter()
     }
 }
