@@ -27,8 +27,11 @@ class Sample3ComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MengapaPerluComposeTheme {
-//                Sample3ComposeApp()
-                MyTopBar()
+                Column {
+                    // Sample3ComposeApp()
+                    MyTopBar()
+                    FormInput()
+                }
             }
         }
     }
@@ -114,4 +117,33 @@ fun MyTopBar() {
             }
         }
     )
+}
+
+@Preview
+@Composable
+fun MyTopBarPreview() {
+    MengapaPerluComposeTheme {
+        MyTopBar()
+    }
+}
+
+@Composable
+fun FormInput() {
+    var name by remember { mutableStateOf("") }
+    OutlinedTextField(
+        value = name,
+        onValueChange = { newName ->
+            name = newName
+        },
+        label = { Text(text = "Name") },
+        modifier = Modifier.padding(8.dp)
+    )
+}
+
+@Preview
+@Composable
+fun FormInputPreview() {
+    MengapaPerluComposeTheme {
+        FormInput()
+    }
 }
