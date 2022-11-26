@@ -153,16 +153,13 @@ fun FormInputPreview() {
 }
 
 @Composable
-fun StatefulCounter() {
+fun StatefulCounter(modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(16.dp)
     ) {
         var count by rememberSaveable { mutableStateOf(0) }
-        Text(text = "Button clicked $count times:")
-        Button(onClick = { count++ }) {
-            Text(text = "Click me!")
-        }
+        StatelessCounter(count = count, onClick = { count++ }, modifier = modifier)
     }
 }
 
@@ -171,5 +168,19 @@ fun StatefulCounter() {
 fun StatefulCounterPreview() {
     MengapaPerluComposeTheme {
         StatefulCounter()
+    }
+}
+
+@Composable
+fun StatelessCounter(
+    count: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.padding(16.dp)) {
+        Text(text = "Button clicked $count times:")
+        Button(onClick = { onClick() }) {
+            Text(text = "Click me!")
+        }
     }
 }
