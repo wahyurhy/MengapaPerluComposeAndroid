@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -33,6 +34,7 @@ class Sample3ComposeActivity : ComponentActivity() {
                     MyTopBar()
                     FormInput()
                     StatefulCounter()
+                    MyScreen()
                 }
             }
         }
@@ -183,4 +185,33 @@ fun StatelessCounter(
             Text(text = "Click me!")
         }
     }
+}
+
+@Composable
+fun MyScreen() {
+    // State hanya ada di MyScreen
+    var checked by remember { mutableStateOf(false) }
+    Row (
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(16.dp)
+    ){
+        MySwitch(checked = checked, onCheckChanged = {checked = it})
+        Text(
+            text = if(checked) "ON" else "OFF",
+            Modifier.clickable {
+                checked = !checked
+            }
+        )
+    }
+}
+
+// checked bersifat Immutable (tidak dapat diubah)
+@Composable
+fun MySwitch(checked: Boolean, onCheckChanged: (Boolean) -> Unit) {
+    Switch(
+        checked = checked,
+        onCheckedChange = {
+            onCheckChanged(it)
+        }
+    )
 }
