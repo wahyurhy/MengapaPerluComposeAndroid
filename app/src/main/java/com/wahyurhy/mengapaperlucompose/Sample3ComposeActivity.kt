@@ -161,7 +161,12 @@ fun StatefulCounter(modifier: Modifier = Modifier) {
         modifier = Modifier.padding(16.dp)
     ) {
         var count by rememberSaveable { mutableStateOf(0) }
-        StatelessCounter(count = count, onClick = { count++ }, modifier = modifier)
+        StatelessCounter(
+            count = count,
+            onClick = { count++ },
+            btnReset = { count = 0 },
+            modifier = modifier
+        )
     }
 }
 
@@ -177,12 +182,18 @@ fun StatefulCounterPreview() {
 fun StatelessCounter(
     count: Int,
     onClick: () -> Unit,
+    btnReset: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.padding(16.dp)) {
-        Text(text = "Button clicked $count times:")
+        if (count > 0) {
+            Text(text = "Button clicked $count times:")
+        }
         Button(onClick = { onClick() }) {
             Text(text = "Click me!")
+        }
+        Button(onClick = { btnReset() }) {
+            Text(text = "Reset")
         }
     }
 }
@@ -190,14 +201,14 @@ fun StatelessCounter(
 @Composable
 fun MyScreen() {
     // State hanya ada di MyScreen
-    var checked by remember { mutableStateOf(false) }
-    Row (
+    var checked by rememberSaveable { mutableStateOf(false) }
+    Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(16.dp)
-    ){
-        MySwitch(checked = checked, onCheckChanged = {checked = it})
+    ) {
+        MySwitch(checked = checked, onCheckChanged = { checked = it })
         Text(
-            text = if(checked) "ON" else "OFF",
+            text = if (checked) "ON" else "OFF",
             Modifier.clickable {
                 checked = !checked
             }
